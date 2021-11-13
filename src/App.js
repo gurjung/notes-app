@@ -1,10 +1,11 @@
 import './App.css';
+import {NotesList} from './Components/NotesList.js';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>hello World</h1>
+        <NotesList />
       </header>
     </div>
   );
