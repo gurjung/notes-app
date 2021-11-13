@@ -3,10 +3,8 @@ import {NotesList} from './Components/NotesList.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="container">
         <NotesList />
-      </header>
     </div>
   );
 }
