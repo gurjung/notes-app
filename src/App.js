@@ -9,9 +9,20 @@ function App() {
     { id: nanoid(), text: "Hello this is third note", date: "13/11/2021" },
     { id: nanoid(), text: "Hello this is fourth note", date: "13/11/2021" },
   ]);
+
+  const addNote = (text) => {
+    const today = new Date();
+    const newNote = {
+      id: nanoid(),
+      text: text,
+      date: today.toLocaleDateString(),
+    };
+    const newNotes = [...notes, newNote];
+    setNotes(newNotes);
+  };
   return (
     <div className="container">
-      <NotesList notes={notes}/>
+      <NotesList notes={notes} handleAddNote={addNote} />
     </div>
   );
 }
