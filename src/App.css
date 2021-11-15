@@ -1,3 +1,6 @@
+html body {
+  height: 100%;
+}
 .note {
   background-color: #fef68a;
   padding: 1rem;
@@ -21,6 +24,7 @@
   margin-right: auto;
   padding-right: 15px;
   padding-left: 15px;
+  height: 100%;
 }
 
 .notes-list {
@@ -74,4 +78,25 @@ textarea:focus {
 
 .search input:focus {
   outline: none;
+}
+
+/* header */
+
+.header {
+  color: white;
+}
+.container-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.light-mode {
+  background-color: white;
+}
+.dark-mode {
+  background-color: grey;
+}
+
+.light-mode-icon {
+  color: white;
 }
