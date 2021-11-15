@@ -41,18 +41,37 @@ textarea {
   background-color: #67d7cc;
 }
 
-textarea:focus{
+textarea:focus {
   outline: none;
 }
 
-.save{
+.save {
   border: none;
   border-radius: 10px;
   padding: 5px;
-  background-color: rgb(204, 204, 204)
+  background-color: rgb(204, 204, 204);
 }
 
-.save:hover{
+.save:hover {
   background-color: #fff;
   cursor: pointer;
+}
+
+/*Search Bar*/
+.search {
+  background-color: rgb(233, 233, 233);
+  margin-bottom: 1.5em;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.search input {
+  border: none;
+  background-color: rgb(233, 233, 233);
+}
+
+.search input:focus {
+  outline: none;
 }
