@@ -28,12 +28,9 @@ function App() {
     setNotes(newNotes);
   };
 
-  const handleSearchInput = (e) => {
-    setSearchText(e.target.value);
-  };
   return (
     <div className="container">
-      <Search handleSearchInput={handleSearchInput} />
+      <Search handleSearchInput={setSearchText}/>
       <NotesList
         notes={notes.filter((note) =>
           note.text.toLowerCase().includes(searchText)
