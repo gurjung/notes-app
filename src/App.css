@@ -91,9 +91,7 @@ textarea:focus {
   align-items: center;
   justify-content: space-between;
 }
-.light-mode {
-  background-color: white;
-}
+
 .dark-mode {
   background-color: grey;
 }

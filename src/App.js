@@ -1,20 +1,32 @@
 import "./App.css";
 import { NotesList } from "./Components/NotesList.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { Search } from "./Components/Search.js";
 import { MdDarkMode } from "react-icons/md";
-import { MdOutlineDarkMode } from "react-icons/md";
+import { BsFillSunFill } from "react-icons/bs";
 function App() {
-  const [notes, setNotes] = useState([
-    { id: nanoid(), text: "Hello this is first note", date: "13/11/2021" },
-    { id: nanoid(), text: "Hello this is second note", date: "13/11/2021" },
-    { id: nanoid(), text: "Hello this is third note", date: "13/11/2021" },
-    { id: nanoid(), text: "Hello this is fourth note", date: "13/11/2021" },
-  ]);
+  const [notes, setNotes] = useState(() => {
+    const savedNotes = JSON.parse(localStorage.getItem("notes-app-data"));
+    return (
+      savedNotes || [
+        { id: nanoid(), text: "Hello this is first note", date: "13/11/2021" },
+        { id: nanoid(), text: "Hello this is second note", date: "13/11/2021" },
+        { id: nanoid(), text: "Hello this is third note", date: "13/11/2021" },
+        { id: nanoid(), text: "Hello this is fourth note", date: "13/11/2021" },
+      ]
+    );
+  });
 
   const [searchText, setSearchText] = useState("");
   const [darkMode, setDarkMode] = useState(false);
+
+  //local storage feature
+  useEffect(() => {
+    console.log("inside setItem");
+    localStorage.setItem("notes-app-data", JSON.stringify(notes));
+  }, [notes]);
+
   const addNote = (text) => {
     const today = new Date();
     const newNote = {
@@ -35,13 +47,13 @@ function App() {
     setDarkMode(!darkMode);
   };
   return (
-    <div className={`${darkMode ? "dark-mode" : "light-mode"}`}>
+    <div className={`${darkMode && "dark-mode"}`}>
       <div className="container">
         <div className="container-header">
           <h1 className={`${darkMode ? "header" : ""}`}>Notes</h1>
           <div onClick={handleDarkMode}>
             {darkMode ? (
-              <MdOutlineDarkMode size="2.3em" className="light-mode-icon" />
+              <BsFillSunFill size="2.3em" className="light-mode-icon" />
             ) : (
               <MdDarkMode size="2.3em" />
             )}

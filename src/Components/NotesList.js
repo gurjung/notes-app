@@ -6,6 +6,7 @@ export const NotesList = ({ notes, handleAddNote, handleDeleteNote }) => {
     <div className="notes-list">
       {notes.map((item) => (
         <Note
+          key={item.id}
           id={item.id}
           text={item.text}
           date={item.date}
