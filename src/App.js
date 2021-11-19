@@ -31,11 +31,7 @@ function App() {
     setNotes(newNotes);
   };
 
-  const handleSearchInput = (e) => {
-    setSearchText(e.target.value);
-  };
-
-  const handleToggleMode = () => {
+  const handleDarkMode = () => {
     setDarkMode(!darkMode);
   };
   return (
@@ -43,7 +39,7 @@ function App() {
       <div className="container">
         <div className="container-header">
           <h1 className={`${darkMode ? "header" : ""}`}>Notes</h1>
-          <div onClick={handleToggleMode}>
+          <div onClick={handleDarkMode}>
             {darkMode ? (
               <MdOutlineDarkMode size="2.3em" className="light-mode-icon" />
             ) : (
@@ -51,7 +47,7 @@ function App() {
             )}
           </div>
         </div>
-        <Search handleSearchInput={handleSearchInput} />
+        <Search handleSearchInput={setSearchText} />
         <NotesList
           notes={notes.filter((note) =>
             note.text.toLowerCase().includes(searchText)

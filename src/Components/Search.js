@@ -7,7 +7,7 @@ export const Search = ({ handleSearchInput }) => {
       <input
         type="text"
         placeholder="Search Notes"
-        onChange={() => handleSearchInput}
+        onChange={(e) => handleSearchInput(e.target.value)}
       ></input>
     </div>
   );
