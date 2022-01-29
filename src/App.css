@@ -83,7 +83,11 @@ textarea:focus {
 
 /* header */
 
-.header {
+.header{
+  color:#41424c
+}
+
+.header-active {
   color: white;
 }
 .container-header {

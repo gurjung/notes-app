@@ -47,12 +47,12 @@ const App=()=>{
     <div className={`${IsDarkMode && "dark-mode"}`}>
       <div className="container">
         <div className="container-header">
-          <h1 className={`${IsDarkMode ? "header" : ""}`}>{TEXTS.APP_HEADING}</h1>
+          <h1 className={`${IsDarkMode ? "header-active" : "header"}`}>{TEXTS.APP_HEADING}</h1>
           <div onClick={handleDarkMode}>
             {IsDarkMode ? (
               <LightModeIcon size="2.3em" className="light-mode-icon" />
             ) : (
-              <DarkModeIcon size="2.3em" />
+              <DarkModeIcon size="2.3em" color="#41424C" />
             )}
           </div>
         </div>
