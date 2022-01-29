@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-export const AddNote = ({ handleAddNote }) => {
+
+const AddNote = ({ handleAddNote }) => {
   const [noteText, setNoteText] = useState("");
   const characterLimit = 200;
   const handleTextChange = (e) => {
@@ -31,3 +32,5 @@ export const AddNote = ({ handleAddNote }) => {
     </div>
   );
 };
+
+export default AddNote

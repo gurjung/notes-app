@@ -1,9 +1,10 @@
 import React from "react";
-import { MdSearch } from "react-icons/md";
-export const Search = ({ handleSearchInput }) => {
+import { SearchIcon } from "../icons";
+
+const Search = ({ handleSearchInput }) => {
   return (
     <div className="search">
-      <MdSearch size="1.3em" />
+      <SearchIcon size="1.3em" />
       <input
         type="text"
         placeholder="Search Notes"
@@ -12,3 +13,5 @@ export const Search = ({ handleSearchInput }) => {
     </div>
   );
 };
+
+export default Search

@@ -1,11 +1,12 @@
-import "./App.css";
-import { NotesList } from "./Components/NotesList.js";
 import { useState, useEffect } from "react";
+import NotesList from "./components/NotesList.js";
+import Search from "./components/Search.js";
+import {DarkModeIcon} from './icons/index'
+import {LightModeIcon} from './icons/index'
 import { nanoid } from "nanoid";
-import { Search } from "./Components/Search.js";
-import { MdDarkMode } from "react-icons/md";
-import { BsFillSunFill } from "react-icons/bs";
-function App() {
+import "./App.css";
+
+const App=()=>{
   const [notes, setNotes] = useState(() => {
     const savedNotes = JSON.parse(localStorage.getItem("notes-app-data"));
     return (
@@ -19,7 +20,7 @@ function App() {
   });
 
   const [searchText, setSearchText] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
+  const [IsDarkMode, setIsDarkMode] = useState(false);
 
   //local storage feature
   useEffect(() => {
@@ -44,18 +45,18 @@ function App() {
   };
 
   const handleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setIsDarkMode(!IsDarkMode);
   };
   return (
-    <div className={`${darkMode && "dark-mode"}`}>
+    <div className={`${IsDarkMode && "dark-mode"}`}>
       <div className="container">
         <div className="container-header">
-          <h1 className={`${darkMode ? "header" : ""}`}>Notes</h1>
+          <h1 className={`${IsDarkMode ? "header" : ""}`}>Notes</h1>
           <div onClick={handleDarkMode}>
-            {darkMode ? (
-              <BsFillSunFill size="2.3em" className="light-mode-icon" />
+            {IsDarkMode ? (
+              <LightModeIcon size="2.3em" className="light-mode-icon" />
             ) : (
-              <MdDarkMode size="2.3em" />
+              <DarkModeIcon size="2.3em" />
             )}
           </div>
         </div>
