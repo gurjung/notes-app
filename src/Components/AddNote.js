@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import {TEXTS} from '../constants'
 const AddNote = ({ handleAddNote }) => {
   const [noteText, setNoteText] = useState("");
   const characterLimit = 200;
@@ -24,7 +24,7 @@ const AddNote = ({ handleAddNote }) => {
         onChange={handleTextChange}
       ></textarea>
       <div className="note-footer">
-        <small>{characterLimit - noteText.length} Remaining</small>
+        <small>{characterLimit - noteText.length} {TEXTS.REMAINING_CHARS}</small>
         <button className="save" onClick={handleSaveClick}>
           Save
         </button>
@@ -34,3 +34,4 @@ const AddNote = ({ handleAddNote }) => {
 };
 
 export default AddNote
+  

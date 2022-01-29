@@ -3,6 +3,7 @@ import NotesList from "./components/NotesList.js";
 import Search from "./components/Search.js";
 import {DarkModeIcon} from './icons/index'
 import {LightModeIcon} from './icons/index'
+import {TEXTS} from './constants'
 import { nanoid } from "nanoid";
 import "./App.css";
 
@@ -11,10 +12,7 @@ const App=()=>{
     const savedNotes = JSON.parse(localStorage.getItem("notes-app-data"));
     return (
       savedNotes || [
-        { id: nanoid(), text: "Hello this is first note", date: "13/11/2021" },
-        { id: nanoid(), text: "Hello this is second note", date: "13/11/2021" },
-        { id: nanoid(), text: "Hello this is third note", date: "13/11/2021" },
-        { id: nanoid(), text: "Hello this is fourth note", date: "13/11/2021" },
+        { id: nanoid(), text: TEXTS.INITIAL_NOTE_DESCRIPTION, date: TEXTS.INITIAL_DATE },
       ]
     );
   });
@@ -22,9 +20,7 @@ const App=()=>{
   const [searchText, setSearchText] = useState("");
   const [IsDarkMode, setIsDarkMode] = useState(false);
 
-  //local storage feature
   useEffect(() => {
-    console.log("inside setItem");
     localStorage.setItem("notes-app-data", JSON.stringify(notes));
   }, [notes]);
 
@@ -51,7 +47,7 @@ const App=()=>{
     <div className={`${IsDarkMode && "dark-mode"}`}>
       <div className="container">
         <div className="container-header">
-          <h1 className={`${IsDarkMode ? "header" : ""}`}>Notes</h1>
+          <h1 className={`${IsDarkMode ? "header" : ""}`}>{TEXTS.APP_HEADING}</h1>
           <div onClick={handleDarkMode}>
             {IsDarkMode ? (
               <LightModeIcon size="2.3em" className="light-mode-icon" />
