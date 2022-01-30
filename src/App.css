@@ -111,7 +111,31 @@ textarea:focus {
 }
 
 /* sidebar */
-
 .sidebar {
   padding-right: 1rem;
+}
+
+.sidebar-list-items {
+  list-style: none;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+}
+
+.sidebar-list-visible {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  height: 6.8rem;
+  padding: 0;
+  transition: 300ms;
+}
+
+.sidebar-list-hidden {
+  display: none;
+}
+
+.sidebar-add-icon {
+  cursor: pointer;
 }
