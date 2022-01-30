@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import NotesList from "./components/NotesList.js";
+import NotesList from "./components/NoteList/NotesList.js";
 import Search from "./components/Search.js";
 import SideBar from "./components/SideBar/SideBar.js";
 import { DarkModeIcon } from "./icons/index";
@@ -18,6 +18,7 @@ const App = () => {
           id: nanoid(),
           text: TEXTS.INITIAL_NOTE_DESCRIPTION,
           date: TEXTS.INITIAL_DATE,
+          time: "5:04:40 PM",
           Color: COLORS.LIGHT_GREEN,
         },
       ]
@@ -33,12 +34,14 @@ const App = () => {
 
   const addNote = (color) => {
     const today = new Date();
-
+    const date = today.toLocaleDateString();
+    const time = today.toLocaleTimeString();
     const newNotes = [...notes];
     newNotes.push({
       id: nanoid(),
       text: "",
-      date: today.toLocaleDateString(),
+      date: date,
+      time: time,
       color: color,
     });
     setNotes(newNotes);
@@ -72,7 +75,7 @@ const App = () => {
             {IsDarkMode ? (
               <LightModeIcon size="2.3em" className="light-mode-icon" />
             ) : (
-              <DarkModeIcon size="2.3em" color="#41424C" />
+              <DarkModeIcon size="2.3em" color={COLORS.DARK_GREY} />
             )}
           </div>
         </div>
@@ -83,7 +86,7 @@ const App = () => {
             notes={notes.filter((note) =>
               note.text.toLowerCase().includes(searchText)
             )}
-            handleDeleteNote={deleteNote}
+            deleteNote={deleteNote}
             updateText={updateText}
           />
         </div>

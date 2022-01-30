@@ -1,7 +1,7 @@
 import React from "react";
 import Note from "./Note.js";
 
-const NotesList = ({ notes, handleDeleteNote,updateText }) => {
+const NotesList = ({ notes, deleteNote, updateText }) => {
   const reverseArray = (arr) => {
     const array = [];
 
@@ -22,8 +22,9 @@ const NotesList = ({ notes, handleDeleteNote,updateText }) => {
           id={item.id}
           text={item.text}
           date={item.date}
+          time={item.time}
           color={item.color}
-          handleDeleteNote={handleDeleteNote}
+          deleteNote={deleteNote}
           updateText={updateText}
         />
       ))}

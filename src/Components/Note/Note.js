@@ -1,8 +1,7 @@
 import React from "react";
 import { DeleteNoteIcon } from "../icons";
 
-const Note = ({ id, text, date, color, handleDeleteNote, updateText }) => {
-  
+const Note = ({ id, text, date, time, color, deleteNote, updateText }) => {
   return (
     <div className="note" style={{ backgroundColor: color }}>
       <textarea
@@ -14,8 +13,9 @@ const Note = ({ id, text, date, color, handleDeleteNote, updateText }) => {
       ></textarea>
       <div className="note-footer">
         <small>{date}</small>
+        <small>{time}</small>
         <DeleteNoteIcon
-          onClick={() => handleDeleteNote(id)}
+          onClick={() => deleteNote(id)}
           className="delete-icon"
           size="1.3em"
         />
