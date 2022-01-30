@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
 import NotesList from "./components/NotesList.js";
 import Search from "./components/Search.js";
-import {DarkModeIcon} from './icons/index'
-import {LightModeIcon} from './icons/index'
-import {TEXTS} from './constants'
+import SideBar from "./components/SideBar.js";
+import { DarkModeIcon } from "./icons/index";
+import { LightModeIcon } from "./icons/index";
+import { TEXTS } from "./constants";
 import { nanoid } from "nanoid";
 import "./App.css";
 
-const App=()=>{
+const App = () => {
   const [notes, setNotes] = useState(() => {
     const savedNotes = JSON.parse(localStorage.getItem("notes-app-data"));
     return (
       savedNotes || [
-        { id: nanoid(), text: TEXTS.INITIAL_NOTE_DESCRIPTION, date: TEXTS.INITIAL_DATE },
+        {
+          id: nanoid(),
+          text: TEXTS.INITIAL_NOTE_DESCRIPTION,
+          date: TEXTS.INITIAL_DATE,
+        },
       ]
     );
   });
@@ -47,7 +52,9 @@ const App=()=>{
     <div className={`${IsDarkMode && "dark-mode"}`}>
       <div className="container">
         <div className="container-header">
-          <h1 className={`${IsDarkMode ? "header-active" : "header"}`}>{TEXTS.APP_HEADING}</h1>
+          <h1 className={`${IsDarkMode ? "header-active" : "header"}`}>
+            {TEXTS.APP_HEADING}
+          </h1>
           <div onClick={handleDarkMode}>
             {IsDarkMode ? (
               <LightModeIcon size="2.3em" className="light-mode-icon" />
@@ -57,6 +64,7 @@ const App=()=>{
           </div>
         </div>
         <Search handleSearchInput={setSearchText} />
+        <SideBar />
         <NotesList
           notes={notes.filter((note) =>
             note.text.toLowerCase().includes(searchText)
@@ -67,6 +75,6 @@ const App=()=>{
       </div>
     </div>
   );
-}
+};
 
 export default App;
