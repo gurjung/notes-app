@@ -81,7 +81,7 @@ const App = () => {
         </div>
         <Search handleSearchInput={setSearchText} />
         <div className="notes-container">
-          <SideBar addNote={addNote} />
+          <SideBar addNote={addNote} IsDarkMode={IsDarkMode}/>
           <NotesList
             notes={notes.filter((note) =>
               note.text.toLowerCase().includes(searchText)

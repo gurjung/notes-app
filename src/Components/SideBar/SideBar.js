@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AddNoteIcon } from "../../icons";
 import { COLORS } from "../../constants";
 import "./SideBar.css";
-const SideBar = ({ addNote }) => {
+const SideBar = ({ addNote, IsDarkMode }) => {
   const colors = [
     COLORS.DARK_ORANGE,
     COLORS.DARK_YELLOW,
@@ -15,7 +15,7 @@ const SideBar = ({ addNote }) => {
     <div className="sidebar">
       <AddNoteIcon
         size="2.3em"
-        color={COLORS.DARK_GREY}
+        color={IsDarkMode ? COLORS.WHITE : COLORS.DARK_GREY}
         className="sidebar-add-icon"
         onClick={() => setIsListOpen(!isListOpen)}
       />
