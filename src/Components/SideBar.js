@@ -1,9 +1,9 @@
 import React from "react";
-import {AddNoteIcon} from "../icons";
+import { AddNoteIcon } from "../icons";
 const SideBar = () => {
   return (
-    <div>
-      <AddNoteIcon size='2.3em'/>
+    <div className="sidebar">
+      <AddNoteIcon size="2.3em" color="#41424c" />
     </div>
   );
 };

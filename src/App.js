@@ -64,14 +64,16 @@ const App = () => {
           </div>
         </div>
         <Search handleSearchInput={setSearchText} />
-        <SideBar />
-        <NotesList
-          notes={notes.filter((note) =>
-            note.text.toLowerCase().includes(searchText)
-          )}
-          handleAddNote={addNote}
-          handleDeleteNote={deleteNote}
-        />
+        <div className="notes-container">
+          <SideBar />
+          <NotesList
+            notes={notes.filter((note) =>
+              note.text.toLowerCase().includes(searchText)
+            )}
+            handleAddNote={addNote}
+            handleDeleteNote={deleteNote}
+          />
+        </div>
       </div>
     </div>
   );
