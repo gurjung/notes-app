@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import NotesList from "./components/NotesList.js";
 import Search from "./components/Search.js";
-import SideBar from "./components/SideBar.js";
+import SideBar from "./components/SideBar/SideBar.js";
 import { DarkModeIcon } from "./icons/index";
 import { LightModeIcon } from "./icons/index";
 import { TEXTS } from "./constants";
+import { COLORS } from "./constants";
 import { nanoid } from "nanoid";
 import "./App.css";
 
@@ -17,6 +18,7 @@ const App = () => {
           id: nanoid(),
           text: TEXTS.INITIAL_NOTE_DESCRIPTION,
           date: TEXTS.INITIAL_DATE,
+          Color: COLORS.LIGHT_GREEN,
         },
       ]
     );
@@ -29,14 +31,16 @@ const App = () => {
     localStorage.setItem("notes-app-data", JSON.stringify(notes));
   }, [notes]);
 
-  const addNote = (text) => {
+  const addNote = (color) => {
     const today = new Date();
-    const newNote = {
+
+    const newNotes = [...notes];
+    newNotes.push({
       id: nanoid(),
-      text: text,
+      text: "",
       date: today.toLocaleDateString(),
-    };
-    const newNotes = [...notes, newNote];
+      color: color,
+    });
     setNotes(newNotes);
   };
 
@@ -47,6 +51,15 @@ const App = () => {
 
   const handleDarkMode = () => {
     setIsDarkMode(!IsDarkMode);
+  };
+  const updateText = (text, id) => {
+    const tempNotes = [...notes];
+
+    const index = tempNotes.findIndex((item) => item.id === id);
+    if (index < 0) return;
+
+    tempNotes[index].text = text;
+    setNotes(tempNotes);
   };
   return (
     <div className={`${IsDarkMode && "dark-mode"}`}>
@@ -65,13 +78,13 @@ const App = () => {
         </div>
         <Search handleSearchInput={setSearchText} />
         <div className="notes-container">
-          <SideBar />
+          <SideBar addNote={addNote} />
           <NotesList
             notes={notes.filter((note) =>
               note.text.toLowerCase().includes(searchText)
             )}
-            handleAddNote={addNote}
             handleDeleteNote={deleteNote}
+            updateText={updateText}
           />
         </div>
       </div>

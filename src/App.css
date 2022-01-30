@@ -41,15 +41,10 @@
   flex-direction: row;
 }
 
-/* add new note box*/
-.note.new {
-  background-color: #67d7cc;
-}
-
 textarea {
   resize: none;
   border: none;
-  background-color: #67d7cc;
+  background-color: transparent;
 }
 
 textarea:focus {

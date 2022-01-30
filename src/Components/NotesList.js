@@ -1,22 +1,34 @@
 import React from "react";
 import Note from "./Note.js";
-import AddNote from "./AddNote.js";
 
-const NotesList = ({ notes, handleAddNote, handleDeleteNote }) => {
+const NotesList = ({ notes, handleDeleteNote,updateText }) => {
+  const reverseArray = (arr) => {
+    const array = [];
+
+    for (let i = arr.length - 1; i >= 0; --i) {
+      array.push(arr[i]);
+    }
+
+    return array;
+  };
+
+  const revNotes = reverseArray(notes);
+
   return (
     <div className="notes-list">
-      {notes.map((item) => (
+      {revNotes.map((item) => (
         <Note
           key={item.id}
           id={item.id}
           text={item.text}
           date={item.date}
+          color={item.color}
           handleDeleteNote={handleDeleteNote}
+          updateText={updateText}
         />
       ))}
-      <AddNote handleAddNote={handleAddNote} />
     </div>
   );
 };
 
-export default NotesList
+export default NotesList;

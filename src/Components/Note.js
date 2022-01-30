@@ -1,10 +1,17 @@
 import React from "react";
-import {DeleteNoteIcon} from '../icons'
+import { DeleteNoteIcon } from "../icons";
 
-const Note = ({ id, text, date, handleDeleteNote }) => {
+const Note = ({ id, text, date, color, handleDeleteNote, updateText }) => {
+  
   return (
-    <div className="note" id={id}>
-      <span>{text}</span>
+    <div className="note" style={{ backgroundColor: color }}>
+      <textarea
+        rows="8"
+        cols="10"
+        defaultValue={text}
+        placeholder="Add new note"
+        onChange={(e) => updateText(e.target.value, id)}
+      ></textarea>
       <div className="note-footer">
         <small>{date}</small>
         <DeleteNoteIcon
@@ -17,4 +24,4 @@ const Note = ({ id, text, date, handleDeleteNote }) => {
   );
 };
 
-export default Note
+export default Note;
