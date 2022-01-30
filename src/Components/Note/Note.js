@@ -1,5 +1,6 @@
 import React from "react";
-import { DeleteNoteIcon } from "../icons";
+import { DeleteNoteIcon } from "../../icons";
+import "./Note.css";
 
 const Note = ({ id, text, date, time, color, deleteNote, updateText }) => {
   return (
