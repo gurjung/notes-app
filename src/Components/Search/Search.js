@@ -1,6 +1,6 @@
 import React from "react";
-import { SearchIcon } from "../icons";
-
+import { SearchIcon } from "../../icons";
+import "./Search.css";
 const Search = ({ handleSearchInput }) => {
   return (
     <div className="search">
@@ -14,4 +14,4 @@ const Search = ({ handleSearchInput }) => {
   );
 };
 
-export default Search
+export default Search;
