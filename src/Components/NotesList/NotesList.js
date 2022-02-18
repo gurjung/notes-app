@@ -1,6 +1,6 @@
 import React from "react";
 import Note from "../Note/Note.js";
-import "./NoteList.css";
+import "./NotesList.css";
 
 const NotesList = ({ notes, deleteNote, updateText }) => {
   const reverseArray = (arr) => {
