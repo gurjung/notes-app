@@ -53,6 +53,9 @@ const App = () => {
   };
 
   const handleDarkMode = () => {
+    IsDarkMode
+      ? document.body.classList.remove("dark-mode")
+      : document.body.classList.add("dark-mode");
     setIsDarkMode(!IsDarkMode);
   };
   const updateText = (text, id) => {
@@ -65,31 +68,29 @@ const App = () => {
     setNotes(tempNotes);
   };
   return (
-    <div className={`${IsDarkMode && "dark-mode"}`}>
-      <div className="container">
-        <div className="container-header">
-          <h1 className={`${IsDarkMode ? "header-active" : "header"}`}>
-            {TEXTS.APP_HEADING}
-          </h1>
-          <div onClick={handleDarkMode}>
-            {IsDarkMode ? (
-              <LightModeIcon size="2.3em" className="light-mode-icon" />
-            ) : (
-              <DarkModeIcon size="2.3em" color={COLORS.DARK_GREY} />
-            )}
-          </div>
+    <div className="container">
+      <div className="container-header">
+        <h1 className={`${IsDarkMode ? "header-active" : "header"}`}>
+          {TEXTS.APP_HEADING}
+        </h1>
+        <div onClick={handleDarkMode}>
+          {IsDarkMode ? (
+            <LightModeIcon size="2.3em" className="light-mode-icon" />
+          ) : (
+            <DarkModeIcon size="2.3em" color={COLORS.DARK_GREY} />
+          )}
         </div>
-        <Search handleSearchInput={setSearchText} />
-        <div className="notes-container">
-          <SideBar addNote={addNote} IsDarkMode={IsDarkMode}/>
-          <NotesList
-            notes={notes.filter((note) =>
-              note.text.toLowerCase().includes(searchText)
-            )}
-            deleteNote={deleteNote}
-            updateText={updateText}
-          />
-        </div>
+      </div>
+      <Search handleSearchInput={setSearchText} />
+      <div className="notes-container">
+        <SideBar addNote={addNote} IsDarkMode={IsDarkMode} />
+        <NotesList
+          notes={notes.filter((note) =>
+            note.text.toLowerCase().includes(searchText)
+          )}
+          deleteNote={deleteNote}
+          updateText={updateText}
+        />
       </div>
     </div>
   );
