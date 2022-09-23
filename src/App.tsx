@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
-import NotesList from "./components/NotesList/NotesList.js";
-import Search from "./components/Search/Search.js";
-import SideBar from "./components/SideBar/SideBar.js";
-import { DarkModeIcon } from "./icons/index";
-import { LightModeIcon } from "./icons/index";
-import { TEXTS } from "./constants";
-import { COLORS } from "./constants";
+import { NotesList, Search, SideBar } from "./components";
+import { DarkModeIcon, LightModeIcon } from "./icons/index";
+import { TEXTS, COLORS } from "./constants";
 import { nanoid } from "nanoid";
+import { TNote } from "./types/interfaces";
 import "./App.css";
 
-const App = () => {
-  const [notes, setNotes] = useState(() => {
-    const savedNotes = JSON.parse(localStorage.getItem("notes-app-data"));
+const App: React.FC = () => {
+  const [notes, setNotes] = useState<TNote[]>(() => {
+    const storageItem = localStorage.getItem("notes-app-data");
+    const savedNotes =
+      typeof storageItem === "string" ? JSON.parse(storageItem) : null;
     return (
       savedNotes || [
         {
@@ -25,14 +24,14 @@ const App = () => {
     );
   });
 
-  const [searchText, setSearchText] = useState("");
-  const [IsDarkMode, setIsDarkMode] = useState(false);
+  const [searchText, setSearchText] = useState<string>("");
+  const [IsDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
     localStorage.setItem("notes-app-data", JSON.stringify(notes));
   }, [notes]);
 
-  const addNote = (color) => {
+  const addNote = (color: string) => {
     const today = new Date();
     const date = today.toLocaleDateString();
     const time = today.toLocaleTimeString();
@@ -47,7 +46,7 @@ const App = () => {
     setNotes(newNotes);
   };
 
-  const deleteNote = (id) => {
+  const deleteNote = (id: string) => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
   };
@@ -58,7 +57,7 @@ const App = () => {
       : document.body.classList.add("dark-mode");
     setIsDarkMode(!IsDarkMode);
   };
-  const updateText = (text, id) => {
+  const updateText = (text: string, id: string) => {
     const tempNotes = [...notes];
 
     const index = tempNotes.findIndex((item) => item.id === id);
@@ -86,7 +85,7 @@ const App = () => {
         <SideBar addNote={addNote} IsDarkMode={IsDarkMode} />
         <NotesList
           notes={notes.filter((note) =>
-            note.text.toLowerCase().includes(searchText)
+            note?.text?.toLowerCase().includes(searchText)
           )}
           deleteNote={deleteNote}
           updateText={updateText}
