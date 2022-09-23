@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
-import NotesList from "./components/NotesList/NotesList.tsx";
-import Search from "./components/Search/Search.tsx";
-import SideBar from "./components/SideBar/SideBar.tsx";
-import { DarkModeIcon } from "./icons/index";
-import { LightModeIcon } from "./icons/index";
-import { TEXTS } from "./constants";
-import { COLORS } from "./constants";
+import { NotesList, Search, SideBar } from "./components";
+import { DarkModeIcon, LightModeIcon } from "./icons/index";
+import { TEXTS, COLORS } from "./constants";
 import { nanoid } from "nanoid";
 import "./App.css";
 
