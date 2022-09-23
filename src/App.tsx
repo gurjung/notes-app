@@ -24,8 +24,8 @@ const App: React.FC = () => {
     );
   });
 
-  const [searchText, setSearchText] = useState("");
-  const [IsDarkMode, setIsDarkMode] = useState(false);
+  const [searchText, setSearchText] = useState<string>("");
+  const [IsDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
     localStorage.setItem("notes-app-data", JSON.stringify(notes));
