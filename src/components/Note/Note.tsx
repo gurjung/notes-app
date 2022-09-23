@@ -1,18 +1,9 @@
 import React from "react";
 import { DeleteNoteIcon } from "../../icons";
+import { INote } from "../../types/interfaces";
 import "./Note.css";
 
-interface INoteProps {
-  id: number;
-  text: string;
-  date: string;
-  time: string;
-  color: undefined | string;
-  deleteNote: (id: number) => void;
-  updateText: (e: string, id: number) => void;
-}
-
-const Note: React.FC<INoteProps> = (props) => {
+const Note: React.FC<INote> = (props) => {
   const { id, text, date, time, color, deleteNote, updateText } = props;
   return (
     <div className="note" style={{ backgroundColor: color }}>

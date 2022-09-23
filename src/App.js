@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import NotesList from "./components/NotesList/NotesList.js";
+import NotesList from "./components/NotesList/NotesList.tsx";
 import Search from "./components/Search/Search.js";
 import SideBar from "./components/SideBar/SideBar.js";
 import { DarkModeIcon } from "./icons/index";

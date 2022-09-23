@@ -1,8 +1,12 @@
 import React from "react";
-import Note from "../Note/Note.tsx";
+import Note from "../Note/Note";
+import { INote } from "./../../types/interfaces";
 import "./NotesList.css";
+interface INotesListProps extends INote {
+  notes: INote[];
+}
 
-const NotesList = (props) => {
+const NotesList: React.FC<INotesListProps> = (props) => {
   const { notes, deleteNote, updateText } = props;
   const revNotes = [...notes].reverse();
   return (
