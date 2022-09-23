@@ -1,9 +1,11 @@
 import React from "react";
 import Note from "../Note/Note";
-import { INote } from "./../../types/interfaces";
+import { TNote } from "./../../types/interfaces";
 import "./NotesList.css";
-interface INotesListProps extends INote {
-  notes: INote[];
+interface INotesListProps extends TNote {
+  notes: TNote[];
+  deleteNote: (id: string) => void;
+  updateText: (e: string, id: string) => void;
 }
 
 const NotesList: React.FC<INotesListProps> = (props) => {

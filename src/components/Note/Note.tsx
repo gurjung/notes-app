@@ -1,9 +1,14 @@
 import React from "react";
 import { DeleteNoteIcon } from "../../icons";
-import { INote } from "../../types/interfaces";
+import { TNote } from "../../types/interfaces";
 import "./Note.css";
 
-const Note: React.FC<INote> = (props) => {
+export interface INoteProps extends TNote {
+  deleteNote: (id: string) => void;
+  updateText: (e: string, id: string) => void;
+}
+
+const Note: React.FC<INoteProps> = (props) => {
   const { id, text, date, time, color, deleteNote, updateText } = props;
   return (
     <div className="note" style={{ backgroundColor: color }}>
@@ -13,14 +18,14 @@ const Note: React.FC<INote> = (props) => {
         defaultValue={text}
         placeholder="Add new note"
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-          updateText(e.target.value, id)
+          updateText(e.target.value, id!)
         }
       ></textarea>
       <div className="note-footer">
         <small>{date}</small>
         <small>{time}</small>
         <DeleteNoteIcon
-          onClick={() => deleteNote(id)}
+          onClick={() => deleteNote(id!)}
           className="delete-icon"
           size="1.3em"
         />
