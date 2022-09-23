@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import { AddNoteIcon } from "../../icons";
 import { COLORS } from "../../constants";
 import "./SideBar.css";
-const SideBar = ({ addNote, IsDarkMode }) => {
+
+interface ISidebarProps {
+  IsDarkMode: boolean;
+  addNote: (item: string) => void;
+}
+
+const SideBar: React.FC<ISidebarProps> = (props) => {
+  const { addNote, IsDarkMode } = props;
+  const [isListOpen, setIsListOpen] = useState<boolean>(false);
   const colors = [
     COLORS.DARK_ORANGE,
     COLORS.DARK_YELLOW,
     COLORS.LIGHT_GREEN,
     COLORS.PURPLE,
   ];
-  const [isListOpen, setIsListOpen] = useState(false);
-  console.log(isListOpen);
   return (
     <div className="sidebar">
       <AddNoteIcon

@@ -1,20 +1,16 @@
 import React from "react";
-import Note from "../Note/Note.js";
+import Note from "../Note/Note";
+import { TNote } from "./../../types/interfaces";
 import "./NotesList.css";
+interface INotesListProps extends TNote {
+  notes: TNote[];
+  deleteNote: (id: string) => void;
+  updateText: (e: string, id: string) => void;
+}
 
-const NotesList = ({ notes, deleteNote, updateText }) => {
-  const reverseArray = (arr) => {
-    const array = [];
-
-    for (let i = arr.length - 1; i >= 0; --i) {
-      array.push(arr[i]);
-    }
-
-    return array;
-  };
-
-  const revNotes = reverseArray(notes);
-
+const NotesList: React.FC<INotesListProps> = (props) => {
+  const { notes, deleteNote, updateText } = props;
+  const revNotes = [...notes].reverse();
   return (
     <div className="notes-list">
       {revNotes.map((item) => (
