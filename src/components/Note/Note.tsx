@@ -12,15 +12,8 @@ interface INoteProps {
   updateText: (e: string, id: number) => void;
 }
 
-const Note: React.FC<INoteProps> = ({
-  id,
-  text,
-  date,
-  time,
-  color,
-  deleteNote,
-  updateText,
-}) => {
+const Note: React.FC<INoteProps> = (props) => {
+  const { id, text, date, time, color, deleteNote, updateText } = props;
   return (
     <div className="note" style={{ backgroundColor: color }}>
       <textarea
