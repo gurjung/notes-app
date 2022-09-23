@@ -17,7 +17,6 @@ const SideBar: React.FC<ISidebarProps> = (props) => {
     COLORS.LIGHT_GREEN,
     COLORS.PURPLE,
   ];
-  console.log(isListOpen);
   return (
     <div className="sidebar">
       <AddNoteIcon
