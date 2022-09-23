@@ -1,5 +1,5 @@
 import React from "react";
-import Note from "../Note/Note.js";
+import Note from "../Note/Note.tsx";
 import "./NotesList.css";
 
 const NotesList = ({ notes, deleteNote, updateText }) => {
